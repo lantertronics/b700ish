@@ -4,10 +4,7 @@
 // Buchla 700 voice architecture in Supercollider
 // Aaron Lanterman, October 21, 2020
 
-// Make sure you also have b700ish_patches.scd file.
-// Also, find the line that reads
-// "/Users/lanterma/buchla700_supercollider/b700ish_patches.scd".load;
-// and change it to an appropriate path on your machine.
+// Make sure you also have b700ish_patches.scd file and store it in the same directory as b700ish.scd.
 
 // Execute this whole-file code block to start.
 // There's a bug where you need to manually select a patch from the patch menu before sound will start.
@@ -31,7 +28,7 @@ FreqScope.new;
 ~levelAeno = 6; ~levelBeno = 7;
 ~filteno = 8; ~reseno = 9;
 
-"/Users/lanterma/buchla700_supercollider/b700ish_patches.scd".load;
+(thisProcess.nowExecutingPath.dirname ++ "/b700ish_patches.scd").load;
 if (~currentPatch.isNil,{~currentPatch=0});
 ~instruments[~currentPatch].value;
 
